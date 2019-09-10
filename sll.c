@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+int top=-1;
 struct s
 {
     int data;
@@ -31,12 +32,30 @@ void addback(struct s* n,struct s* t)
     }
     t->ptr=n;  
 }
-
+struct s* delfront(struct s* t)
+{
+    struct s* tp=t->ptr;
+    t->ptr=NULL;
+    free(t);
+    return tp;
+}
+void delend(struct s* t,struct s* n)
+{
+    while(t!=NULL)
+    {
+        t=t->ptr;
+    }
+    if(n!=t){
+        n=n->ptr;
+    }
+    n->ptr=NULL;
+    free(t);
+}
 int main()
 {
     int ch;
     printf("Enter your choice to perform an operation:\n");
-    printf("1.Display the linked list\n2.Add an element in the front of the linked list\n3.Add an element to the end of the linked list");
+    printf("1.Display the linked list\n2.Add an element in the front of the linked list\n3.Add an element to the end of the linked list\n4.Delete an element in the  front of the linked list\n5.Delete an element at the end of the linked list\n");
     scanf("%d",&ch);
     struct s* first=NULL;
     struct s* second=NULL;
@@ -46,6 +65,7 @@ int main()
     first=(struct s*)malloc(sizeof(struct s));
     second=(struct s*)malloc(sizeof(struct s));
     third=(struct s*)malloc(sizeof(struct s));
+
     newtemp=(struct s*)malloc(sizeof(struct s));
     first-> data=1;
     first->ptr=second;
@@ -54,6 +74,7 @@ int main()
     third-> data=3;
     third->ptr=NULL;
     temp=first;
+    struct s* u;
     switch(ch){
         case 1:print(first);
                break;
@@ -64,7 +85,15 @@ int main()
         case 3: addback(newtemp,temp);
                 print(first);
                 break;
-        default: printf("Wrong Choice! Select between 1-3");
+        case 4: u=delfront(temp);  
+                first=u;
+                print(first);
+                break;
+        case 5: newtemp=first;
+                delend(temp,newtemp);  
+                print(first);
+                break;
+       default: printf("Wrong Choice! Select between 1-3");
     }
     return 0;
 }
