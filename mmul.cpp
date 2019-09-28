@@ -9,7 +9,7 @@ using namespace std;
 #define MAX 4 
   
 // maximum number of threads 
-#define MAX_THREAD 4 
+#define MAX_THREAD 100
   
 int matA[MAX][MAX]; 
 int matB[MAX][MAX]; 
@@ -20,6 +20,7 @@ void* multi(void* arg)
 { 
     int core = step_i++; 
   
+    sleep(20);
     // Each thread computes 1/4th of matrix multiplication 
     for (int i = core * MAX / 4; i < (core + 1) * MAX / 4; i++)  
         for (int j = 0; j < MAX; j++)  
