@@ -1,5 +1,5 @@
-12  ash  ltts  56  67  78 201 67
-72  ruh  ltts  90  89  79 258 86
+12  ash  ltts  56  $val  78 201 90
+72  ruh  ltts  $val  89  79 258 86
 56  tan  ltts  56  99  92 247 82
 12  qwe  asd  23  34  45 102 34
-45  rey  ert  78  98  67 243 81
+45  rey  ert  78  98  $val 243 81
